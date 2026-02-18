@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="container property-detail">
+    <h1>{{ .Title }}</h1>
+    <div class="price-big">{{ .Params.price }}</div>
+    <div class="location-big">{{ .Params.location }}</div>
+
+    <div class="image-gallery">
+        {{ range .Params.images }}
+        <img src="{{ $.RelPermalink }}{{ . }}" alt="{{ $.Title }}">
+        {{ end }}
+    </div>
+
+    <div class="specs-grid">
+        <div class="spec-item"><strong>Type:</strong> {{ .Params.propertyType }}</div>
+        <div class="spec-item"><strong>Status:</strong> {{ .Params.status }}</div>
+        <div class="spec-item"><strong>Area:</strong> {{ .Params.area }}</div>
+        <div class="spec-item"><strong>Bedrooms:</strong> {{ .Params.bedrooms }}</div>
+        <div class="spec-item"><strong>Bathrooms:</strong> {{ .Params.bathrooms }}</div>
+    </div>
+
+    <div class="property-description">
+        {{ .Content }}
+    </div>
+
+    <div class="cta-box">
+        <h3>Interested in this property?</h3>
+        <a href="/contact/" class="btn">Inquire Now</a>
+    </div>
+</article>
+{{ end }}

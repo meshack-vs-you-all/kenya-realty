@@ -1,0 +1,53 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="container hero-content">
+        <h1>Find Your Dream Property in Kenya</h1>
+        <p>Premium listings in Kahawa Wendani, Ruiru, Westlands, and beyond.</p>
+        <div class="cta-buttons">
+            <a href="/properties/" class="btn">Browse Properties</a>
+            <a href="/contact/" class="btn btn-alt">Book a Viewing</a>
+        </div>
+    </div>
+</section>
+
+<section class="featured-properties container">
+    <h2>Featured Properties</h2>
+    <div class="property-grid">
+        {{ range where .Site.RegularPages "Section" "properties" }}
+        <div class="property-card">
+            {{ if .Params.images }}
+            <div class="card-image" style="background: #eee;">
+                <!-- Local image rendering - would normally use .Resources.Get -->
+                <img src="{{ .RelPermalink }}{{ index .Params.images 0 }}" alt="{{ .Title }}"
+                    onerror="this.src='/images/placeholder.jpg'">
+            </div>
+            {{ end }}
+            <div class="card-body">
+                <div class="price">{{ .Params.price }}</div>
+                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                <div class="location">📌 {{ .Params.location }}</div>
+                <div class="specs">
+                    <span>🛏️ {{ .Params.bedrooms }} Bed</span>
+                    <span>🛁 {{ .Params.bathrooms }} Bath</span>
+                </div>
+                <a href="{{ .Permalink }}" class="btn-sm">View Details</a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+<section class="agent-intro" style="background: #f9f9f9; padding: 4rem 0;">
+    <div class="container agent-content">
+        <h2>Expert Guidance from Local Agents</h2>
+        <p>Our team knows the Kenyan market inside out. From Westlands high-rises to Ruiru plots, we've got you covered.
+        </p>
+    </div>
+</section>
+
+<section class="contact-section container">
+    <h2>Get In Touch</h2>
+    <p>Ready to see a property? Contact us today.</p>
+    <a href="/contact/" class="btn">Contact Agent</a>
+</section>
+{{ end }}

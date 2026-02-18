@@ -1,0 +1,32 @@
+baseURL = "http://localhost:1317/"
+languageCode = "en-us"
+title = "Kenya Realty - Find Your Dream Home"
+theme = "kenya-realty-theme"
+canonifyURLs = true
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 9
+
+[taxonomies]
+  propertyType = "propertyTypes"
+  status = "status"
+  location = "locations"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Properties"
+    url = "/properties/"
+    weight = 2
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 4
