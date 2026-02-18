@@ -1,7 +1,6 @@
 {{ define "main" }}
-<div class="container property-list-page">
+<div class="container taxonomy-list">
     <h1>{{ .Title }}</h1>
-    {{ partial "filters.html" . }}
     <div class="property-grid">
         {{ range .Pages }}
         <div class="property-card">

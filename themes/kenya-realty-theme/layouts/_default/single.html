@@ -5,8 +5,9 @@
     <div class="location-big">{{ .Params.location }}</div>
 
     <div class="image-gallery">
-        {{ range .Params.images }}
-        <img src="{{ $.RelPermalink }}{{ . }}" alt="{{ $.Title }}">
+        {{ range .Resources.Match "*.{jpg,jpeg,png}" }}
+        {{ $image := .Resize "1200x" }}
+        <img src="{{ $image.RelPermalink }}" alt="{{ $.Title }}">
         {{ end }}
     </div>
 
@@ -22,9 +23,21 @@
         {{ .Content }}
     </div>
 
-    <div class="cta-box">
-        <h3>Interested in this property?</h3>
-        <a href="/contact/" class="btn">Inquire Now</a>
+    <div class="property-sidebar">
+        {{ with .Site.GetPage "agents/main-agent.md" }}
+        <div class="agent-card"
+            style="border: 1px solid #ddd; padding: 1.5rem; margin-top: 2rem; border-radius: 8px; display: flex; gap: 1rem; align-items: center;">
+            <img src="{{ .Params.photo }}" alt="{{ .Params.name }}"
+                style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+            <div>
+                <h4>{{ .Params.name }}</h4>
+                <p style="font-size: 0.8rem; margin: 0;">{{ .Params.bio }}</p>
+                <p style="font-weight: bold; margin: 5px 0 0 0;">{{ .Params.phone }}</p>
+            </div>
+        </div>
+        {{ end }}
+
+        {{ partial "inquiry_form.html" . }}
     </div>
 </article>
 {{ end }}

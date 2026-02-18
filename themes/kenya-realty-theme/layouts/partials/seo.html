@@ -1,0 +1,24 @@
+{{ if eq .Section "properties" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "RealEstateListing",
+  "name": "{{ .Title }}",
+  "description": "{{ .Plain | truncate 160 }}",
+  "url": "{{ .Permalink }}",
+  {{ with .Params.images }}
+  "image": "{{ $.RelPermalink }}{{ index . 0 }}",
+  {{ end }}
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ replace .Params.price "KES " "" | replace "," "" }}",
+    "priceCurrency": "KES"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ .Params.location }}",
+    "addressCountry": "KE"
+  }
+}
+</script>
+{{ end }}

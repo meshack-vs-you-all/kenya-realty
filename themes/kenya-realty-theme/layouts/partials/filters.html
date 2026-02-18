@@ -1,0 +1,62 @@
+<div class="filters container">
+    <div class="filter-group">
+        <strong>Filter by Type:</strong>
+        <nav>
+            {{ range .Site.Taxonomies.propertyTypes }}
+            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+            {{ end }}
+        </nav>
+    </div>
+    <div class="filter-group">
+        <strong>Status:</strong>
+        <nav>
+            {{ range .Site.Taxonomies.status }}
+            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+            {{ end }}
+        </nav>
+    </div>
+    <div class="filter-group">
+        <strong>Location:</strong>
+        <nav>
+            {{ range .Site.Taxonomies.locations }}
+            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+            {{ end }}
+        </nav>
+    </div>
+</div>
+
+<style>
+    .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        background: #f4f4f4;
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .filter-group strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #1b5e20;
+    }
+
+    .filter-group nav a {
+        margin-right: 15px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: #555;
+        border: 1px solid #ddd;
+        padding: 4px 10px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .filter-group nav a:hover {
+        background: #1b5e20;
+        color: white;
+        border-color: #1b5e20;
+    }
+</style>

@@ -13,13 +13,18 @@
 <section class="featured-properties container">
     <h2>Featured Properties</h2>
     <div class="property-grid">
-        {{ range where .Site.RegularPages "Section" "properties" }}
+        {{ range (where .Site.RegularPages "Params.featured" true) | first 6 }}
         <div class="property-card">
-            {{ if .Params.images }}
-            <div class="card-image" style="background: #eee;">
-                <!-- Local image rendering - would normally use .Resources.Get -->
-                <img src="{{ .RelPermalink }}{{ index .Params.images 0 }}" alt="{{ .Title }}"
-                    onerror="this.src='/images/placeholder.jpg'">
+            {{ $img := .Resources.GetMatch "img1.*" }}
+            {{ if $img }}
+            {{ $thumb := $img.Fill "600x400" }}
+            <div class="card-image">
+                <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}">
+            </div>
+            {{ else }}
+            <div class="card-image"
+                style="background: #eee; height: 200px; display: flex; align-items: center; justify-content: center;">
+                No Image
             </div>
             {{ end }}
             <div class="card-body">
@@ -38,10 +43,17 @@
 </section>
 
 <section class="agent-intro" style="background: #f9f9f9; padding: 4rem 0;">
-    <div class="container agent-content">
-        <h2>Expert Guidance from Local Agents</h2>
-        <p>Our team knows the Kenyan market inside out. From Westlands high-rises to Ruiru plots, we've got you covered.
-        </p>
+    <div class="container agent-content" style="display: flex; align-items: center; gap: 2rem;">
+        {{ with .Site.GetPage "agents/main-agent.md" }}
+        <div class="agent-photo">
+            <img src="{{ .Params.photo }}" alt="{{ .Params.name }}" style="width: 150px; border-radius: 50%;">
+        </div>
+        <div class="agent-info">
+            <h2>{{ .Params.name }}</h2>
+            <p>{{ .Params.bio }}</p>
+            <p><strong>📞 {{ .Params.phone }}</strong> | <strong>✉️ {{ .Params.email }}</strong></p>
+        </div>
+        {{ end }}
     </div>
 </section>
 
