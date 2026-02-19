@@ -1,9 +1,9 @@
 <header>
     <nav class="container">
-        <div class="logo"><a href="/">KENYA<span>REALTY</span></a></div>
+        <div class="logo"><a href="{{ "/" | absURL }}">KENYA<span>REALTY</span></a></div>
         <ul class="nav-links">
             {{ range .Site.Menus.main }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            <li><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
             {{ end }}
         </ul>
     </nav>

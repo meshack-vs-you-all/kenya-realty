@@ -1,9 +1,18 @@
-baseURL = "http://localhost:1317/"
-languageCode = "en-us"
-title = "Kenya Realty - Find Your Dream Home"
+baseURL = "https://meshack-vs-you-all.github.io/kenya-realty/"
+languageCode = "en-KE"
+title = "Kenya Realty | Premium Real Estate in Nairobi & Beyond"
 theme = "kenya-realty-theme"
-canonifyURLs = true
+canonifyURLs = false
 enableRobotsTXT = true
+
+[params]
+  description = "Kenya Realty offers premium residential and commercial properties for sale and rent in Nairobi, Kiambu, and across Kenya. Find your next high-value investment with us."
+  keywords = ["Real Estate Kenya", "Apartments for sale Nairobi", "Luxury Homes Kenya", "Commercial Property Nairobi", "Plots for sale Ruiru", "Kenya Realty"]
+  footer = "© 2026 Kenya Realty. All Rights Reserved. Excellence in Kenyan Real Estate."
+  currency = "KSh"
+  phone = "+254 700 000 000"
+  email = "sales@kenyarealty.co.ke"
+  address = "14 Riverside Drive, Nairobi, Kenya"
 
 [pagination]
   pagerSize = 9
@@ -13,20 +22,23 @@ enableRobotsTXT = true
   status = "status"
   location = "locations"
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    name = "Properties"
-    url = "/properties/"
-    weight = 2
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 3
-  [[menu.main]]
-    name = "Contact"
-    url = "/contact/"
-    weight = 4
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+[[menu.main]]
+  name = "All Properties"
+  url = "/properties/"
+  weight = 2
+[[menu.main]]
+  name = "Investments"
+  url = "/properties/land/"
+  weight = 3
+[[menu.main]]
+  name = "About Us"
+  url = "/about/"
+  weight = 4
+[[menu.main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 5
